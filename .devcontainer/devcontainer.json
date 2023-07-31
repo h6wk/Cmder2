@@ -12,7 +12,8 @@
 				"ms-vscode.cpptools-themes",
 				"ms-vscode.cpptools-extension-pack",
 				"akiramiyakoda.cppincludeguard",
-				"jebbs.plantuml"
+				"jebbs.plantuml",
+				"MerBleueAviation.auto-header-plus"
 			]
 		}
 	},
