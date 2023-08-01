@@ -15,5 +15,5 @@ RUN pacman -S jre-openjdk-headless --noconfirm
 # C++ to PlantUML
 RUN pacman -S python-pipx --noconfirm
 RUN pipx install hpp2plantuml
-RUN pipx ensurepath                             # add the root's pipx folder into the PATH
+RUN pipx ensurepath                             # add the pipx folder into the PATH
 RUN eval "$(register-python-argcomplete pipx)"  # for pipx command completition support
