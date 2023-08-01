@@ -13,7 +13,8 @@
 				"ms-vscode.cpptools-extension-pack",
 				"akiramiyakoda.cppincludeguard",
 				"jebbs.plantuml",
-				"MerBleueAviation.auto-header-plus"
+				"MerBleueAviation.auto-header-plus",
+				"ms-azuretools.vscode-docker"
 			]
 		}
 	}

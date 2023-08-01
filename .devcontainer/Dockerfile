@@ -9,5 +9,11 @@ RUN wget https://github.com/bazelbuild/bazelisk/releases/download/v1.17.0/bazeli
 RUN chmod +x bazelisk-linux-amd64
 RUN mv bazelisk-linux-amd64 /usr/local/bin/bazel
 
-# Openjdk 20 for PlantUML diagram generation
+# Openjdk for PlantUML diagram generation
 RUN pacman -S jre-openjdk-headless --noconfirm
+
+# C++ to PlantUML
+RUN pacman -S python-pipx --noconfirm
+RUN pipx install hpp2plantuml
+RUN pipx ensurepath                             # add the root's pipx folder into the PATH
+RUN eval "$(register-python-argcomplete pipx)"  # for pipx command completition support
