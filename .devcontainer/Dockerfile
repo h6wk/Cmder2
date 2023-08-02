@@ -17,3 +17,12 @@ RUN pacman -S python-pipx --noconfirm
 RUN pipx install hpp2plantuml
 RUN pipx ensurepath                             # add the pipx folder into the PATH
 RUN eval "$(register-python-argcomplete pipx)"  # for pipx command completition support
+
+# PlantUML jar
+RUN wget https://github.com/plantuml/plantuml/releases/download/v1.2023.10/plantuml-1.2023.10.jar
+RUN mv plantuml-1.2023.10.jar /root
+# TODO: need to fix! missing windows TTF fonts in the container
+
+
+# Environment
+RUN echo 'alias ll="ls -al"' >> ~/.bashrc
