@@ -12,8 +12,8 @@ RUN mv bazelisk-linux-amd64 /usr/local/bin/bazel
 # Openjdk for PlantUML diagram generation
 RUN pacman -S jre-openjdk-headless --noconfirm
 
-# C++ to PlantUML
-RUN pacman -S python-pipx --noconfirm
+# C++ to PlantUML (+graphviz for rendering)
+RUN pacman -S python-pipx graphviz --noconfirm
 RUN pipx install hpp2plantuml
 RUN pipx ensurepath                             # add the pipx folder into the PATH
 RUN eval "$(register-python-argcomplete pipx)"  # for pipx command completition support
@@ -33,6 +33,11 @@ RUN echo 'alias ll="ls -al"' >> ~/.bashrc
 # Create a non-root user with sudo privileges
 RUN useradd -m rob && echo 'rob ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
+# TODO: remove this or the jre20 later
+# Additional packages
+RUN pacman -S jre8-openjdk --noconfirm
+RUN archlinux-java set java-8-openjdk/jre
+
 USER rob
 
 # Set the working directory to the home directory
@@ -40,8 +45,9 @@ WORKDIR /home/rob
 
 RUN echo 'alias ll="ls -al"' >> ~/.bashrc
 
+# TODO: to check if it is really necessary for SVG generation
 # Clone and install the fonts -> this will create: ttf-ms-fonts-2.0-12-any.pkg.tar.zst, install it and remove
 RUN git clone https://aur.archlinux.org/ttf-ms-fonts.git
-RUN cd ttf-ms-fonts && makepkg -si --noconfirm && cd .. && rm -rf ttf-ms-fonts
+RUN cd ttf-ms-fonts && makepkg -si --noconfirm  && cd .. && rm -rf ttf-ms-fonts
 
 USER root
