@@ -1,0 +1,56 @@
+@startuml
+
+
+
+
+
+/' Objects '/
+
+class greeter {
+	+{static} greet() : void
+}
+
+
+class scoped_logger {
+	+scoped_logger(const std::string& className, const char* funcName, unsigned line)
+	+~scoped_logger()
+	-_ss : std::stringstream
+	+stream() : std::stringstream&
+}
+
+
+namespace cmder {
+	namespace tools {
+		class ThreadPool {
+			+ThreadPool(size_t threadCount)
+			-function<void()
+			+~ThreadPool()
+			-mStopThreadPool : bool
+			+result_of_t<F(Args ... )>>execute ( F&& f, Args&& ... args) : requires std::invocable<F , Args ...>
+			-mConditionVariable : std::condition_variable
+			-mMutex : std::mutex
+			-mThreads : std::vector<std::thread>
+		}
+	}
+}
+
+
+
+
+
+/' Inheritance relationships '/
+
+
+
+
+/' Aggregation relationships '/
+
+
+
+
+
+/' Nested objects '/
+
+
+
+@enduml

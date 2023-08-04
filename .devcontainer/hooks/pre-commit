@@ -1,0 +1,19 @@
+#!/bin/bash
+
+# Define the file you want to copy from bazel-bin
+file_to_copy="/workspaces/cmder2/bazel-bin/workspace/tools/classdiagram.puml"
+
+#echo $file_to_copy
+
+# Check if the file exists in bazel-bin
+if [ -f "$file_to_copy" ]; then
+    # Copy the file to the doc folder
+    cp "$file_to_copy" doc
+
+    # Stage the copied file
+    git add "doc/$(basename "$file_to_copy")"
+    #echo "doc/$(basename "$file_to_copy")"
+
+    # Amend the changes to the last commit
+    git commit --amend --no-edit
+fi

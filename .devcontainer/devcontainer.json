@@ -6,6 +6,14 @@
 	"build": {
 		"dockerfile": "Dockerfile"
 	},
+
+	// With the mounts we can manipulate how to map a volume from the baremetal into the container. Right now
+	// this is not an option, since the GIT repo is not on the HDD.
+	// "mounts": [
+	//	  "source=${localWorkspaceFolder}/.devcontainer/hooks,target=/workspaces/cmder2/.devcontainer/hooks,type=bind"
+	// ],
+	// Example: [2023-08-04T08:45:22.252Z] Start: Run: docker run --sig-proxy=false -a STDOUT -a STDERR --mount source=/workspaces/cmder2/.devcontainer/hooks,target=/workspaces/cmder2/.devcontainer/hooks,type=bind --mount type=volume,src=cmder2-3a63cbf42233589b770289ad58ffbed7224e684c1ce9488aac0993a27957790f,dst=/workspaces --mount type=volume,src=vscode,dst=/vscode -l vsch.local.repository=https://github.com/h6wk/cmder2 -l vsch.local.repository.volume=cmder2-3a63cbf42233589b770289ad58ffbed7224e684c1ce9488aac0993a27957790f -l vsch.local.repository.folder=cmder2 -l devcontainer.config_file=/workspaces/cmder2/.devcontainer/devcontainer.json --entrypoint /bin/sh vsc-cmder2-395315cd84bb70b4b840a7c129e3d2eca1ac0e005e577fc78ddc210592be57ec -c echo Container started
+
 	"customizations": {
 		"vscode": {
 			"extensions": [
@@ -26,8 +34,10 @@
 	// "forwardPorts": [],
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	// "postCreateCommand": "uname -a",
+	"postCreateCommand": "chmod +x .devcontainer/hooks/pre-commit && cp .devcontainer/hooks/pre-commit .git/hooks/ && uname -a",
 
+	"postStartCommand": "chmod +x .devcontainer/hooks/pre-commit",
+	
 	// Configure tool-specific properties.
 	// "customizations": {},
 
