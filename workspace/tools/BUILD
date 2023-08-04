@@ -17,6 +17,12 @@ genrule(
     cmd = "hpp2plantuml -i \"../**/*.h\" -o $(location classdiagram.puml)",
 )
 
+genrule(
+    name = "generate_svg_file",
+    srcs = ["classdiagram.puml"],
+    outs = ["classdiagram.svg"],
+    cmd = "java  -jar /root/plantuml-1.2023.10.jar  -tsvg -I $(location classdiagram.puml)",
+)
 
 # This output is going to be in the bazel-* folder
 # genrule (
