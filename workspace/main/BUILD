@@ -1,13 +1,11 @@
 
-#bazel <run/build> //workspace/main:hello
-
 package(default_visibility = ["//visibility:public"])
 
 cc_binary (
     name = "hello",
     srcs = ["main.cc"],
     deps = [
-        "//workspace/tools:greet",
+        "//workspace/tools:tool",
     ]
 )
 
