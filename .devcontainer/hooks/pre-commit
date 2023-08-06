@@ -1,22 +1,24 @@
 #!/bin/bash
 
-# Define the file you want to copy from bazel-bin
-#file_to_copy="/workspaces/cmder2/bazel-bin/workspace/tools/classdiagram.puml"
+# Generate puml:
+hpp2plantuml -i "workspace/**/*.h" -o "doc/classdiagram.puml"
+# Generate svg
+java  -jar /root/plantuml-1.2023.10.jar  -tsvg -I doc/classdiagram.puml
+# Stage the files
+git add "doc/classdiagram*"
 
-for file_to_copy in "/workspaces/cmder2/bazel-bin/workspace/tools/classdiagram.puml" "/workspaces/cmder2/bazel-bin/workspace/tools/classdiagram.svg" ;
-do
-    # Check if the file exists in bazel-bin
-#    echo $file_to_copy
-    
-    if [ -f "$file_to_copy" ]; then
-        # Copy the file to the doc folder
-        cp "$file_to_copy" doc
 
-        # Stage the copied file
-        git add "doc/$(basename "$file_to_copy")"
-        #echo "doc/$(basename "$file_to_copy")"
 
-        # Amend the changes to the last commit
-        #git commit --amend --no-edit
-    fi
-done
+# # If bazel was the one that generated the puml and the svg:
+# for file_to_copy in "/workspaces/cmder2/bazel-bin/workspace/tools/classdiagram.puml" "/workspaces/cmder2/bazel-bin/workspace/tools/classdiagram.svg" ;
+# do
+#     # Check if the file exists in bazel-bin  
+#     if [ -f "$file_to_copy" ]; then
+#         # Copy the file to the doc folder
+#         cp "$file_to_copy" doc
+#         # Stage the copied file
+#         git add "doc/$(basename "$file_to_copy")"
+#         # Amend the changes to the last commit
+#         #git commit --amend --no-edit
+#     fi
+# done
