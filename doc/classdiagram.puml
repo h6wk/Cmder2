@@ -20,6 +20,16 @@ class scoped_logger {
 
 
 namespace cmder {
+	namespace tst {
+		class ThreadPoolTest {
+			#mThreadPool : std::unique_ptr<ThreadPool>
+			#SetUp() : void
+			#{static} SetUpTestSuite() : void
+			#TearDown() : void
+			#{static} TearDownTestSuite() : void
+		}
+	}
+
 	namespace tools {
 		class ThreadPool {
 			+ThreadPool(size_t threadCount)
@@ -44,6 +54,9 @@ namespace cmder {
 
 
 /' Aggregation relationships '/
+
+cmder.tst.ThreadPoolTest *-- cmder.tools.ThreadPool
+
 
 
 
