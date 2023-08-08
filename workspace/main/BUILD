@@ -5,7 +5,8 @@ cc_binary (
     name = "hello",
     srcs = ["main.cc"],
     deps = [
-        "//workspace/tools:tool",
+        "//workspace/tools:tool"
+        , "//workspace/common:common"
     ]
 )
 

@@ -5,7 +5,8 @@ cc_test(
         "**/*.cc", "**/*.h"
     ]),
     deps = [
-        "//workspace/tools:tool"
+        "//workspace/common:common"
+        , "//workspace/tools:tool"
         , "//workspace/agent:agent"
         , "@com_google_googletest//:gtest_main"
     ],
