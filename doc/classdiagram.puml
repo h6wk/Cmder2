@@ -37,6 +37,21 @@ namespace cmder {
 			-mThreads : std::vector<std::thread>
 		}
 	}
+
+	namespace agent {
+		class Task {
+			-mTaskConfiguration : std::vector<TaskConfig>
+		}
+
+		enum TaskName {
+			BlockMe_3s
+			Pi
+			PingMe_5x
+		}
+
+		class Task::TaskConfig {
+		}
+	}
 }
 
 
@@ -58,6 +73,9 @@ cmder.tst.ThreadPoolTest *-- cmder.tools.ThreadPool
 
 
 /' Nested objects '/
+
+cmder.agent.Task +-- cmder.agent.Task::TaskConfig
+
 
 
 
