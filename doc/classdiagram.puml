@@ -16,6 +16,13 @@ class scoped_logger {
 
 namespace cmder {
 	namespace tst {
+		class TaskTest {
+			#SetUp() : void
+			#{static} SetUpTestSuite() : void
+			#TearDown() : void
+			#{static} TearDownTestSuite() : void
+		}
+
 		class ThreadPoolTest {
 			#mThreadPool : std::unique_ptr<ThreadPool>
 			#SetUp() : void

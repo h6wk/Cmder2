@@ -1,10 +1,12 @@
 
 cc_test(
-    name = "ThreadPoolTest",
+    name = "AllTests",
     srcs = glob([
         "**/*.cc", "**/*.h"
     ]),
     deps = [
-        "//workspace/tools:tool", "@com_google_googletest//:gtest_main"
+        "//workspace/tools:tool"
+        , "//workspace/agent:agent"
+        , "@com_google_googletest//:gtest_main"
     ],
 )

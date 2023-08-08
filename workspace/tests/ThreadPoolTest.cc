@@ -1,7 +1,7 @@
 /******************************************************************************
  * @Author                : h6wk<h6wking@gmail.com>                           *
  * @CreatedDate           : 2023-08-07 21:06:53                               *
- * @LastEditDate          : 2023-08-08 07:08:18                               *
+ * @LastEditDate          : 2023-08-08 20:10:21                               *
  * @CopyRight             : GNU GPL                                           *
  *****************************************************************************/
 
@@ -26,17 +26,17 @@ namespace cmder::tst
       results.emplace_back(std::move(fut));
     }
 
-    for (auto &result : results) {
-      std::cout << result.get() << ' ';
-    }
+    //for (auto &result : results) {
+    //  std::cout << result.get() << ' ';
+    //}
   }
 
   bool isAscending(std::vector<int> &nums, int l, int r)
   {
-      for (int i = l; i + 1 < r; ++i)
-          if (nums[i] > nums[i + 1])
-              return false;
-      return true;
+    for (int i = l; i + 1 < r; ++i)
+      if (nums[i] > nums[i + 1])
+        return false;
+    return true;
   }
 
   TEST_F(ThreadPoolTest, TaskWithParam)
@@ -69,7 +69,7 @@ namespace cmder::tst
     for (auto& x : res) {
         auto [l, r] = x.get();
         EXPECT_TRUE(isAscending(nums, l, r));
-        std::printf("Pass [%d, %d). \n", l, r); 
+        //std::printf("Pass [%d, %d]. \n", l, r); 
     }
 
     // for (size_t i = 0; i < nums.size(); ++i) {
