@@ -6,11 +6,6 @@
 
 /' Objects '/
 
-class greeter {
-	+{static} greet() : void
-}
-
-
 class scoped_logger {
 	+scoped_logger(const std::string& className, const char* funcName, unsigned line)
 	+~scoped_logger()
