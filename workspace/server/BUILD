@@ -1,10 +1,11 @@
 
 cc_library (
-    name = "tool",
+    name = "server",
     srcs = glob(["*.cc"]),
     hdrs = glob(["*.h"]),
     deps = [
         "//workspace/common:common"
+        , "//workspace/agent:agent"
     ],
     visibility = ["//visibility:public"],
 )

@@ -1,13 +1,11 @@
 /******************************************************************************
  * @Author                : h6wk<h6wking@gmail.com>                           *
  * @CreatedDate           : 2023-07-31 20:45:28                               *
- * @LastEditDate          : 2023-07-31 21:03:47                               *
+ * @LastEditDate          : 2023-08-08 22:02:34                               *
  * @CopyRight             : GNU GPL                                           *
  *****************************************************************************/
 
 #include <tools/ThreadPool.h>
-
-#include <tools/Logger.h>
 
 namespace cmder::tools {
 

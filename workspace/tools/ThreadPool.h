@@ -1,12 +1,14 @@
 /******************************************************************************
  * @Author                : h6wk<h6wking@gmail.com>                           *
  * @CreatedDate           : 2023-07-31 20:43:59                               *
- * @LastEditDate          : 2023-07-31 20:54:56                               *
+ * @LastEditDate          : 2023-08-08 22:06:23                               *
  * @CopyRight             : GNU GPL                                           *
  *****************************************************************************/
 
 #ifndef A07D525A_3B9B_4F33_9131_C067AA4A5496
 #define A07D525A_3B9B_4F33_9131_C067AA4A5496
+
+#include <common/Logger.h>
 
 #include <condition_variable>
 #include <functional>
@@ -14,8 +16,6 @@
 #include <queue>
 #include <thread>
 #include <vector>
-
-#include "Logger.h"
 
 #include <concepts>
 

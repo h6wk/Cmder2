@@ -12,6 +12,9 @@ RUN mv bazelisk-linux-amd64 /usr/local/bin/bazel
 # Openjdk for PlantUML diagram generation
 RUN pacman -S jre-openjdk-headless --noconfirm
 
+# TODO: required for graphviz
+#RUN pacman -S gtk2 --noconfirm
+
 # C++ to PlantUML (+graphviz for rendering)
 RUN pacman -S python-pipx graphviz --noconfirm
 RUN pipx install hpp2plantuml
