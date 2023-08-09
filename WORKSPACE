@@ -9,6 +9,9 @@
 #
 # bazel test --test_output=all //workspace/main:hello_test
 #
+# Execute all cc_tests
+#  bazel query //... | xargs bazel test 
+#
 
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")

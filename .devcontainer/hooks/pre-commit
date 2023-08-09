@@ -25,4 +25,4 @@ git add "doc/classdiagram*"
 
 # Save the package status snapshot
 pacman -Q > doc/packages.txt
-git add "doc/packages.txt*"
+git add "doc/packages.txt"

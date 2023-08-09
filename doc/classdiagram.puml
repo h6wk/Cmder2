@@ -15,14 +15,21 @@ class scoped_logger {
 
 
 namespace cmder {
-	enum CallbackMessageType_t {
-		NOTIFICATION
-		RESULT
+	abstract class IControllableThread {
+		+{abstract} getStatus() : int {query}
+		+{abstract} start() : void
+		+{abstract} stop() : void
 	}
 
-	enum ExecutionMode_t {
-		Async
-		Blocking
+	abstract class IStatProvider {
+		+{abstract} statNotification(const std::string& notificationName) : uint64_t {query}
+	}
+
+	enum Status {
+		Init
+		Run
+		Start
+		Stop
 	}
 
 	namespace tst {
@@ -55,9 +62,42 @@ namespace cmder {
 		}
 	}
 
+	namespace common {
+		enum CallbackMessageType_t {
+			NOTIFICATION
+			RESULT
+		}
+
+		enum ExecutionMode_t {
+			Async
+			Blocking
+		}
+	}
+
 	namespace agent {
+		class Receipt {
+			+Receipt(ExecutionMode_t mode)
+			-mEndTime : ChronoTime_t
+			-mStartTime : ChronoTime_t
+			+getEndTime() : ChronoTime_t& {query}
+			+getStartTime() : ChronoTime_t& {query}
+			+getExecutionMode() : ExecutionMode_t {query}
+			-mStatus : Status_t
+			+getTaskId() : TaskId_t {query}
+			-mMode : const ExecutionMode_t
+			-mTaskId : const TaskId_t
+			+getStatus() : int {query}
+			+setEndTime() : void
+			+setStatus(Status_t status) : void
+		}
+
 		class Task {
 			-mTaskConfiguration : std::vector<TaskConfig>
+		}
+
+		enum Receipt::Status_t {
+			FAIL
+			OK
 		}
 
 		enum TaskName {
@@ -82,6 +122,9 @@ namespace cmder {
 
 /' Aggregation relationships '/
 
+cmder.agent.Receipt *-- cmder.common.ExecutionMode_t
+
+
 cmder.tst.ThreadPoolTest *-- cmder.tools.ThreadPool
 
 
@@ -90,6 +133,9 @@ cmder.tst.ThreadPoolTest *-- cmder.tools.ThreadPool
 
 
 /' Nested objects '/
+
+cmder.agent.Receipt +-- cmder.agent.Receipt::Status_t
+
 
 cmder.agent.Task +-- cmder.agent.Task::TaskConfig
 

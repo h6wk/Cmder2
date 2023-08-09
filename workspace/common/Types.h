@@ -1,7 +1,7 @@
 /******************************************************************************
  * @Author                : h6wk<h6wking@gmail.com>                           *
  * @CreatedDate           : 2023-08-08 21:33:10                               *
- * @LastEditDate          : 2023-08-08 21:33:35                               *
+ * @LastEditDate          : 2023-08-09 21:45:55                               *
  * @CopyRight             : GNU GPL                                           *
  *****************************************************************************/
 
@@ -14,7 +14,7 @@
 #define NO_TASK_ID 0u
 #define INVALID_TASK_ID 0xFFFFFFFF
 
-namespace cmder {
+namespace cmder::common {
 
   using ChronoTime_t = std::chrono::time_point<std::chrono::system_clock>;
 
@@ -27,5 +27,7 @@ namespace cmder {
   enum class CallbackMessageType_t {
     NOTIFICATION, RESULT
   };
+
+}
 
 #endif /* C6EC2622_D219_4531_95F0_294A0B76CF09 */
