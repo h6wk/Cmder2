@@ -63,6 +63,22 @@ namespace cmder {
 	}
 
 	namespace common {
+		class Callback {
+			+Callback(const std::string& owner)
+			+~Callback()
+			+empty() : bool {query}
+			-mMutex : mutable std::mutex
+			+size() : size_t {query}
+			+operator<<(std::ostream& ostr, const Callback::SharedPtr& cb) : std :: ostream&
+			-mConditionVariable : std::condition_variable
+			+pop() : std::optional<Message_t>
+			+tryPop() : std::optional<Message_t>
+			-mMessages : std::queue<Message_t>
+			-mOwnerName : std::string
+			+clear() : void
+			+notify(TaskId_t taskId, CallbackMessageType_t type, const std::string& message) : void
+		}
+
 		enum CallbackMessageType_t {
 			NOTIFICATION
 			RESULT
@@ -71,6 +87,13 @@ namespace cmder {
 		enum ExecutionMode_t {
 			Async
 			Blocking
+		}
+
+		class Callback::Message_t {
+			+mType : CallbackMessageType_t
+			+mTime : ChronoTime_t
+			+mTaskId : TaskId_t
+			+mText : std::string
 		}
 	}
 
@@ -122,6 +145,9 @@ namespace cmder {
 
 /' Aggregation relationships '/
 
+cmder.common.Callback::Message_t *-- cmder.common.CallbackMessageType_t
+
+
 cmder.agent.Receipt *-- cmder.common.ExecutionMode_t
 
 
@@ -133,6 +159,9 @@ cmder.tst.ThreadPoolTest *-- cmder.tools.ThreadPool
 
 
 /' Nested objects '/
+
+cmder.common.Callback +-- cmder.common.Callback::Message_t
+
 
 cmder.agent.Receipt +-- cmder.agent.Receipt::Status_t
 

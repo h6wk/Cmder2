@@ -8,6 +8,7 @@ cc_test(
         "//workspace/common:common"
         , "//workspace/tools:tool"
         , "//workspace/agent:agent"
+        , "//workspace/server:server"
         , "@com_google_googletest//:gtest_main"
     ],
 )
