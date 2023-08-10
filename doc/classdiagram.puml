@@ -33,6 +33,13 @@ namespace cmder {
 	}
 
 	namespace tst {
+		class CallbackTest {
+			#{static} sCallback : static Callback::SharedPtr
+			#SetUp() : void
+			#{static} SetUpTestSuite() : void
+			#{static} TearDownTestSuite() : void
+		}
+
 		class TaskTest {
 			#SetUp() : void
 			#{static} SetUpTestSuite() : void
@@ -146,6 +153,9 @@ namespace cmder {
 /' Aggregation relationships '/
 
 cmder.common.Callback::Message_t *-- cmder.common.CallbackMessageType_t
+
+
+cmder.tst.CallbackTest *-- cmder.common.Callback
 
 
 cmder.agent.Receipt *-- cmder.common.ExecutionMode_t
