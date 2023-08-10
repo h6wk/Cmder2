@@ -1,8 +1,11 @@
 FROM archlinux:base-devel-20230723.0.166908
 
+RUN pacman -Syu --noconfirm
+
 # Update the snapshot and install additional tools for development
-RUN pacman -Syu --noconfirm && \
-  pacman -S wget git vi --noconfirm
+RUN pacman -S wget git vi --noconfirm
+
+RUN pacman -S gtk2 --noconfirm
 
 # Bazelist that is going to be act like a bazel
 RUN wget https://github.com/bazelbuild/bazelisk/releases/download/v1.17.0/bazelisk-linux-amd64

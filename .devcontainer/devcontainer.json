@@ -23,10 +23,10 @@
 				"jebbs.plantuml",
 				"MerBleueAviation.auto-header-plus",
 				"donjayamanne.githistory",
-				"ms-azuretools.vscode-docker"
+				"ms-azuretools.vscode-docker",
 			]
 		}
-	}
+	},
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
