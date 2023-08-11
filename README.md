@@ -6,6 +6,8 @@ Install:
   * *Auto Header Plus* (v1.3.0)
   * *C/C++ Extension Pack* (v1.3.0) - The package incudes Intellisense that will help the C++ development.
   * *C/C++ Include Guard* (v1.7.1)
+  * *C/C++ Themes* (v2.0.0)
+  * *Docker (v1.26)
   * *Git History* (v0.6.20)
   * *PlantUML* (v2.17.5)
   * *Remote Development* (v0.24.0) - The package inculdes the *Dev Containers* extension.
