@@ -33,6 +33,16 @@ namespace cmder {
 	}
 
 	namespace tst {
+		class AgentTest {
+			#{static} sServer : Server
+			#{static} sAsyncAgent : static Agent::SharedPtr
+			#{static} sNoCallbackAgent : static Agent::SharedPtr
+			#{static} sCallback : static Callback::SharedPtr
+			#SetUp() : void
+			#{static} SetUpTestSuite() : void
+			#{static} TearDownTestSuite() : void
+		}
+
 		class CallbackTest {
 			#{static} sCallback : static Callback::SharedPtr
 			#SetUp() : void
@@ -225,6 +235,15 @@ cmder.agent.Agent *-- cmder.Status
 
 
 cmder.common.AgentInfo *-- cmder.common.Callback
+
+
+cmder.tst.AgentTest "2" *-- cmder.agent.Agent
+
+
+cmder.tst.AgentTest *-- cmder.common.Callback
+
+
+cmder.tst.AgentTest *-- cmder.srv.Server
 
 
 cmder.common.Callback::Message_t *-- cmder.common.CallbackMessageType_t
