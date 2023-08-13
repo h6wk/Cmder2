@@ -5,7 +5,6 @@ cc_library (
     hdrs = glob(["*.h"]),
     deps = [
         "//workspace/common:common"
-        , "//workspace/agent:agent"
     ],
     visibility = ["//visibility:public"],
 )

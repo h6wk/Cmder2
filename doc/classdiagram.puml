@@ -69,6 +69,27 @@ namespace cmder {
 		}
 	}
 
+	namespace srv {
+		class Server {
+			+Server()
+			+~Server()
+			+getStatus() : Status {query}
+			-mStatus : Status
+			-mAgents : map<AgentName_t, AgentInfo>
+			-mMutex : mutable std::mutex
+			-mConditionVariable : std::condition_variable
+			-mNotificationStatistics : std::map<std::string, uint64_t>
+			-mThreadPtr : std::unique_ptr<std::thread>
+			+statNotification(const std::string& notificationName) : uint64_t {query}
+			+registerAgent(const std::string& agentName, const Callback::SharedPtr& callback) : void
+			-run() : void
+			+start() : void
+			+stop() : void
+			+unregisterAgent(const std::string& agentName) : void
+			-unregisterAgentUnsafe(const std::string& agentName) : void
+		}
+	}
+
 	namespace common {
 		class Callback {
 			+Callback(const std::string& owner)
@@ -96,6 +117,13 @@ namespace cmder {
 			Blocking
 		}
 
+		class AgentInfo {
+			+AgentInfo(string n, const Callback::SharedPtr& sp)
+			+mCallback : Callback::WeakPtr
+			+mHasCallback : bool
+			+mAgentName : string
+		}
+
 		class Callback::Message_t {
 			+mType : CallbackMessageType_t
 			+mTime : ChronoTime_t
@@ -105,6 +133,29 @@ namespace cmder {
 	}
 
 	namespace agent {
+		class Agent {
+			-Agent(Server& server, Callback::SharedPtr callback)
+			+~Agent()
+			-mCallbackAgent : Callback::SharedPtr
+			-mCallbackUser : Callback::WeakPtr
+			+doTask(ExecutionMode_t mode, const TaskName& task, std::string& result) : Receipt {query}
+			-mServer : Server&
+			+{static} create(Server& server, Callback::SharedPtr callback) : SharedPtr
+			+getStatus() : Status {query}
+			-mStatus : Status
+			-mMutex : mutable std::mutex
+			-mConditionVariable : std::condition_variable
+			-mDebugName : std::string
+			+getName() : std::string& {query}
+			-mThreadPtr : std::unique_ptr<std::thread>
+			+statNotification(const std::string& notificationName) : uint64_t {query}
+			+registerAgent() : void
+			-run() : void
+			+start() : void
+			+stop() : void
+			+unregisterAgent() : void
+		}
+
 		class Receipt {
 			+Receipt(ExecutionMode_t mode)
 			-mEndTime : ChronoTime_t
@@ -147,10 +198,34 @@ namespace cmder {
 
 /' Inheritance relationships '/
 
+cmder.IControllableThread <|-- cmder.agent.Agent
+
+
+cmder.IControllableThread <|-- cmder.srv.Server
+
+
+cmder.IStatProvider <|-- cmder.agent.Agent
+
+
+cmder.IStatProvider <|-- cmder.srv.Server
+
+
 
 
 
 /' Aggregation relationships '/
+
+cmder.agent.Agent "2" *-- cmder.common.Callback
+
+
+cmder.agent.Agent *-- cmder.srv.Server
+
+
+cmder.agent.Agent *-- cmder.Status
+
+
+cmder.common.AgentInfo *-- cmder.common.Callback
+
 
 cmder.common.Callback::Message_t *-- cmder.common.CallbackMessageType_t
 
@@ -159,6 +234,12 @@ cmder.tst.CallbackTest *-- cmder.common.Callback
 
 
 cmder.agent.Receipt *-- cmder.common.ExecutionMode_t
+
+
+cmder.srv.Server *-- cmder.common.AgentInfo
+
+
+cmder.srv.Server *-- cmder.Status
 
 
 cmder.tst.ThreadPoolTest *-- cmder.tools.ThreadPool
