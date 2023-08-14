@@ -50,6 +50,14 @@ namespace cmder {
 			#{static} TearDownTestSuite() : void
 		}
 
+		class ServerTest {
+			#mServer : std::unique_ptr<Server>
+			#SetUp() : void
+			#{static} SetUpTestSuite() : void
+			#TearDown() : void
+			#{static} TearDownTestSuite() : void
+		}
+
 		class TaskTest {
 			#SetUp() : void
 			#{static} SetUpTestSuite() : void
@@ -259,6 +267,9 @@ cmder.srv.Server *-- cmder.common.AgentInfo
 
 
 cmder.srv.Server *-- cmder.Status
+
+
+cmder.tst.ServerTest *-- cmder.srv.Server
 
 
 cmder.tst.ThreadPoolTest *-- cmder.tools.ThreadPool
