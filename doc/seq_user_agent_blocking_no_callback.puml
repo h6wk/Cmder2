@@ -1,0 +1,30 @@
+@startuml
+
+!pragma teoz true
+
+actor User
+participant Agent
+participant Server
+
+group #lightgreen Notification 
+Server -[#purple]>> Agent --++#blue: notification
+return
+end
+
+User -[#red]> Agent  --++#red: doCmd(XXX)
+
+group #lightgreen Notification 
+Server -[#purple]>> Agent --++#blue: notification
+return
+end
+
+Agent -[#blue]>> Server : executeTask(XXX)
+Server -[#purple]>> Agent: response
+Agent --[#red]>> User --: response
+
+group #lightgreen Notification 
+Server -[#purple]>> Agent --++#blue: notification
+return
+end
+
+@enduml

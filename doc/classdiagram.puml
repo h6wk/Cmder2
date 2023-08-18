@@ -72,6 +72,14 @@ namespace cmder {
 			#TearDown() : void
 			#{static} TearDownTestSuite() : void
 		}
+
+		namespace poc {
+			class CoroutineTest {
+				#SetUp() : void
+				#{static} SetUpTestSuite() : void
+				#{static} TearDownTestSuite() : void
+			}
+		}
 	}
 
 	namespace tools {
