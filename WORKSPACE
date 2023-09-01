@@ -1,19 +1,20 @@
-# targets
 # 
-# bazel build //...
+# Build the whole project
+#   bazel build //...
+# Build a target
+#   bazel build //workspace/main:hello
 #
-# bazel run //workspace/main:hello
 #
-# bazel build //workspace/main:hello
-# bazel build //workspace/tools:greet
+# Run a binary passing arguments to is (-s)
+#   bazel run //workspace/main:zmq_node -- -s
+#
 #
 # bazel test --test_output=all //workspace/main:hello_test
+# bazel test --test_output=all  --test_arg=--gtest_filter=NodeTest   //workspace/tests:AllTests
 #
 # Execute all cc_tests
-#  bazel query //... | xargs bazel test 
+#   bazel query //... | xargs bazel test 
 #
-# bazel test --test_output=all  --test_arg=--gtest_filter=NodeTest   //workspace/tests:AllTests
-
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 

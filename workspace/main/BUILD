@@ -2,11 +2,12 @@
 package(default_visibility = ["//visibility:public"])
 
 cc_binary (
-    name = "hello",
+    name = "zmq_node",
     srcs = ["main.cc"],
     deps = [
         "//workspace/tools:tool"
         , "//workspace/common:common"
+        , "//workspace/com:com"
     ]
 )
 
