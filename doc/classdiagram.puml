@@ -158,6 +158,12 @@ namespace cmder {
 		}
 	}
 
+	namespace com {
+		class Node {
+			+Node()
+		}
+	}
+
 	namespace agent {
 		class Agent {
 			-Agent(Server& server, Callback::SharedPtr callback)
