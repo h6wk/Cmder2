@@ -12,6 +12,7 @@
 # Execute all cc_tests
 #  bazel query //... | xargs bazel test 
 #
+# bazel test --test_output=all  --test_arg=--gtest_filter=NodeTest   //workspace/tests:AllTests
 
 
 load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
