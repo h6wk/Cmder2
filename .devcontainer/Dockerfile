@@ -4,13 +4,14 @@ FROM archlinux:base-devel-20230723.0.166908
 #RUN echo "bazel query //... | xargs bazel test --test_output=all" >> /root/.local/bin/allTests.sh
 #RUN chmod +x /root/.local/bin/allTests.sh
 
+ARG DISABLE_CACHE_FROM_HERE=$(date +%s)
 RUN pacman -Syu --noconfirm
 
 # Update the snapshot and install additional tools for development
 RUN pacman -S wget git vi --noconfirm
 
 # Messaging library
-RUN pacman -S zeromq --noconfirm
+#RUN pacman -S zeromq --noconfirm
 
 RUN pacman -S gtk2 --noconfirm
 
