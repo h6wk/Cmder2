@@ -50,12 +50,6 @@ namespace cmder {
 			#{static} TearDownTestSuite() : void
 		}
 
-		class NodeTest {
-			#SetUp() : void
-			#{static} SetUpTestSuite() : void
-			#{static} TearDownTestSuite() : void
-		}
-
 		class ServerTest {
 			#mServer : std::unique_ptr<Server>
 			#SetUp() : void
@@ -164,19 +158,6 @@ namespace cmder {
 		}
 	}
 
-	namespace com {
-		class MQClient {
-		}
-
-		class MQServer {
-			+MQServer()
-		}
-
-		class Node {
-			+Node()
-		}
-	}
-
 	namespace agent {
 		class Agent {
 			-Agent(Server& server, Callback::SharedPtr callback)
@@ -253,12 +234,6 @@ cmder.IStatProvider <|-- cmder.agent.Agent
 
 
 cmder.IStatProvider <|-- cmder.srv.Server
-
-
-cmder.com.Node <|-- cmder.com.MQClient
-
-
-cmder.com.Node <|-- cmder.com.MQServer
 
 
 

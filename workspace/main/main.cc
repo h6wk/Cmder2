@@ -1,17 +1,13 @@
 /******************************************************************************
  * @Author                : h6wk<h6wking@gmail.com>                           *
  * @CreatedDate           : 2023-07-31 20:37:40                               *
- * @LastEditDate          : 2023-09-01 21:33:29                               *
+ * @LastEditDate          : 2023-11-02 20:35:40                               *
  * @CopyRight             : GNU GPL                                           *
  *****************************************************************************/
 
 #include <iostream>
 //#include <stdio.h>
 #include <unistd.h>
-
-#include <com/MQServer.h>
-
-using namespace cmder::com;
 
 int main(int argc, char *argv[])
 {
@@ -29,11 +25,5 @@ int main(int argc, char *argv[])
     } 
   } 
 
-
-  std::cout << "\nStarting...";
-
-  MQServer mds;
-
-  std::cout << "\nDone\n";
   return 0;
 }

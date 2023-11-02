@@ -7,7 +7,6 @@ cc_binary (
     deps = [
         "//workspace/tools:tool"
         , "//workspace/common:common"
-        , "//workspace/com:com"
     ]
 )
 
