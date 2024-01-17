@@ -1,9 +1,17 @@
 # 
 # Build the whole project
 #   bazel build //...
-# Build a target
-#   bazel build //workspace/main:hello
 #
+# Build a target
+#   bazel build <TARGET>
+# Up to "bazel query //..." the following valid targes are available:
+# //workspace/agent:agent
+# //workspace/common:common
+# //workspace/main:hello_test
+# //workspace/main:zmq_node
+# //workspace/server:server
+# //workspace/tests:AllTests
+# //workspace/tools:tool
 #
 # Run a binary passing arguments to is (-s)
 #   bazel run //workspace/main:zmq_node -- -s
