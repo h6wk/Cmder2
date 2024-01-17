@@ -1,10 +1,13 @@
-FROM archlinux:base-devel-20230723.0.166908
+FROM archlinux/archlinux:base-devel-20240116.0.207387
 
 #RUN touch /root/.local/bin/allTests.sh
 #RUN echo "bazel query //... | xargs bazel test --test_output=all" >> /root/.local/bin/allTests.sh
 #RUN chmod +x /root/.local/bin/allTests.sh
 
-ARG DISABLE_CACHE_FROM_HERE=$(date +%s)
+#ARG DISABLE_CACHE_FROM_HERE=$(date +%s)
+
+RUN pacman-key --init
+RUN pacman-key --populate
 RUN pacman -Syu --noconfirm
 
 # Update the snapshot and install additional tools for development
