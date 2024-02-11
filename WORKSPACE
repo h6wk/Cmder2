@@ -18,7 +18,7 @@
 #
 #
 # bazel test --test_output=all //workspace/main:hello_test
-# bazel test --test_output=all  --test_arg=--gtest_filter=NodeTest   //workspace/tests:AllTests
+# bazel test --test_output=all  --test_arg=--gtest_filter=MpExecutorTest.*   //workspace/tests:AllTests
 #
 # Execute all cc_tests
 #   bazel query //... | xargs bazel test 

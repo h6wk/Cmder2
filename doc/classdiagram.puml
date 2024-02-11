@@ -80,6 +80,15 @@ namespace cmder {
 				#{static} TearDownTestSuite() : void
 			}
 		}
+
+		namespace exe {
+			class MpExecutorTest {
+				#SetUp() : void
+				#{static} SetUpTestSuite() : void
+				#TearDown() : void
+				#{static} TearDownTestSuite() : void
+			}
+		}
 	}
 
 	namespace tools {
@@ -120,6 +129,7 @@ namespace cmder {
 		class MpExecutor {
 			+MpExecutor()
 			+~MpExecutor()
+			+{static} run(const std::string& command) : void
 		}
 	}
 
