@@ -62,9 +62,12 @@ WORKDIR /home/rob
 
 RUN echo 'alias ll="ls -al"' >> ~/.bashrc
 
+#
+# NOTE: makepkg fails to download (SSL_ERROR_SYSCALL)
+#
 # TODO: to check if it is really necessary for SVG generation
 # Clone and install the fonts -> this will create: ttf-ms-fonts-2.0-12-any.pkg.tar.zst, install it and remove
-RUN git clone https://aur.archlinux.org/ttf-ms-fonts.git
-RUN cd ttf-ms-fonts && makepkg -si --noconfirm  && cd .. && rm -rf ttf-ms-fonts
+#RUN git clone https://aur.archlinux.org/ttf-ms-fonts.git
+#RUN cd ttf-ms-fonts && makepkg -si --noconfirm  && cd .. && rm -rf ttf-ms-fonts
 
 USER root
