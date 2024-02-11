@@ -116,6 +116,13 @@ namespace cmder {
 		}
 	}
 
+	namespace exe {
+		class MpExecutor {
+			+MpExecutor()
+			+~MpExecutor()
+		}
+	}
+
 	namespace common {
 		class Callback {
 			+Callback(const std::string& owner)
