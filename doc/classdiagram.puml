@@ -129,7 +129,14 @@ namespace cmder {
 		class MpExecutor {
 			+MpExecutor()
 			+~MpExecutor()
-			+{static} run(const std::string& command) : void
+			+{static} run(const std::string& command, IpcMode mode) : void
+		}
+
+		enum IpcMode {
+			File
+			Pipe
+			PipeAsync
+			SharedMemory
 		}
 	}
 

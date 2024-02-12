@@ -22,19 +22,48 @@ namespace cmder::exe {
   {
   }
 
-  void MpExecutor::run(const std::string& command)
+  void MpExecutor::run(const std::string& command, IpcMode mode)
   {
     std::cout << "\nCMD:" << command;
 
+    int    pipefd[2];
+    if (pipe(pipefd) == -1) {
+      perror("Cannot create pipe for inter process communication");
+      exit(EXIT_FAILURE);
+    }
+
     const pid_t pid = fork();
-    if (pid > 0) {
+    if (pid == -1) {
+      throw std::runtime_error("Cannot fork child process - errno: " + errno);
+    }
+    else if (pid > 0) {
       std::cout << "\nThis is the PARENT " << getpid() << ". My CHILD is " << pid;
+
+      (void)close(pipefd[1]);          /* Close unused write end */
+
+      char buf;
+      std::string message;
+      while (read(pipefd[0], &buf, 1) > 0) {
+        //write(STDOUT_FILENO, &buf, 1);
+        message += buf;
+      }
+      //write(STDOUT_FILENO, "\n", 1);
+      std::cout << "\nMessage read from pipe: '" << message << "'" << std::endl;
+
+      (void)close(pipefd[0]);
+
       waitpid(pid, 0, 0);
     }
     else {
-      std::cout << "\nThis is the child " << getpid();
+      std::cout << "\nThis is the child " << getpid() << std::endl;
+
+      (void)close(pipefd[0]);          /* Close unused read end */
+
+      const std::string messageToParent("Hello Parent!");
+      (void)write(pipefd[1], messageToParent.c_str(), messageToParent.size());
+      (void)close(pipefd[1]);          /* Close write end */
+
       exit(0);
     }
-
   }
 }

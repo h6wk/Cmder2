@@ -1,8 +1,10 @@
 /******************************************************************************
- * @Author                : h6wk<h6wking@gmail.com>                           *
+ * @Author                : h6wk<130506947+h6wk@users.noreply.github.com>     *
  * @CreatedDate           : 2024-02-11 21:16:11                               *
- * @LastEditDate          : 2024-02-11 22:28:10                               *
- * @CopyRight             : GNU GPL                                           *
+ * @LastEditors           : h6wk<130506947+h6wk@users.noreply.github.com>     *
+ * @LastEditDate          : 2024-02-12 21:20:24                               *
+ * @FilePath              : Cmder2/workspace/exe/MpExecutor.h                 *
+ * @CopyRight             : MerBleueAviation                                  *
  *****************************************************************************/
 
 #ifndef FBDBCD46_4823_4132_8C5A_00FA743A0731
@@ -12,13 +14,21 @@
 
 namespace cmder::exe {
 
+  enum class IpcMode {
+    Pipe = 1
+    , PipeAsync = 2
+    , File = 4
+    , SharedMemory = 8
+  };
+  
+
   class MpExecutor {
   public:
     MpExecutor();
     virtual ~MpExecutor();
 
     /// @brief Blocking call to execute a system command/script
-    static void run(const std::string& command);
+    static void run(const std::string& command, IpcMode mode = IpcMode::Pipe);
   };
 }
 
