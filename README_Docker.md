@@ -12,7 +12,7 @@ $ docker run -d -p 2222:22 --security-opt seccomp:unconfined -v .:/source --name
 
 # Base image
 
-Base image: __Debian__ (bookworm)
+Base image: __archlinux__
 
 
 # Additional packages

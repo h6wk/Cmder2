@@ -196,7 +196,7 @@ pango 1:1.51.1-1
 patch 2.7.6-10
 pciutils 3.10.0-1
 pcre2 10.42-2
-perl 5.38.1-1
+perl 5.38.2-1
 perl-error 0.17029-5
 perl-mailtools 2.21-7
 perl-timedate 2.33-5
@@ -230,7 +230,6 @@ systemd-sysvcompat 255.3-1
 tar 1.35-2
 texinfo 7.1-2
 tpm2-tss 4.0.1-1
-ttf-ms-fonts 2.0-12
 tzdata 2024a-1
 util-linux 2.39.3-1
 util-linux-libs 2.39.3-1
