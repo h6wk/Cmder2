@@ -10,6 +10,9 @@
 #include <assert.h>
 #include <algorithm>
 
+//#include <iostream>
+//#include <stacktrace>
+
 namespace cmder::srv {
 
   Server::Server()
@@ -21,6 +24,17 @@ namespace cmder::srv {
   {
     std::lock_guard guard(mMutex);
     mStatus = Status::Init;
+
+    // TODO: --> going to be printed since test suites have static Server objects.... 
+    LOG("Created");
+
+    //auto trace = std::stacktrace::current();
+    //for (const auto& entry: trace) {
+    //  std::cout << "Description: " << entry.description() << std::endl;
+    //  std::cout << "file: " << entry.source_file() << std::endl;
+    //  std::cout << "line: " << entry.source_line() << std::endl;
+    //  std::cout << "------------------------------------" << std::endl;
+    //}
   }
 
   Server::~Server()

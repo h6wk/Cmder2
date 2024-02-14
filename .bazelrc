@@ -1,5 +1,5 @@
 # build --cxxopt="-std=c++20" --cxxopt="-pedantic" --cxxopt="-Wall"
 build --action_env CC=/usr/bin/g++
 build --action_env CXX=/usr/bin/g++
-build --action_env=BAZEL_CXXOPTS="-std=c++20"
+build --action_env=BAZEL_CXXOPTS="-std=c++23"
 build --cxxopt="-Iworkspace"

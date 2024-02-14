@@ -7,4 +7,5 @@ cc_library (
         "//workspace/common:common"
     ],
     visibility = ["//visibility:public"],
+    #linkopts = ["-lstdc++_libbacktrace"],
 )
