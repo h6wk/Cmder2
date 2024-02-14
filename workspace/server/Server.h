@@ -1,8 +1,10 @@
 /******************************************************************************
- * @Author                : h6wk<h6wking@gmail.com>                           *
+ * @Author                : h6wk<130506947+h6wk@users.noreply.github.com>     *
  * @CreatedDate           : 2023-08-13 20:29:15                               *
- * @LastEditDate          : 2023-08-13 20:51:00                               *
- * @CopyRight             : GNU GPL                                           *
+ * @LastEditors           : h6wk<130506947+h6wk@users.noreply.github.com>     *
+ * @LastEditDate          : 2024-02-14 22:07:11                               *
+ * @FilePath              : Cmder2/workspace/server/Server.h                  *
+ * @CopyRight             : MerBleueAviation                                  *
  *****************************************************************************/
 
 #ifndef A119B341_1BCA_4E80_ABAA_6378B9496862
@@ -11,8 +13,6 @@
 #include <common/AgentInfo.h>
 #include <common/IControllableThread.h>
 #include <common/IStatProvider.h>
-
-#include <common/Logger.h>
 
 #include <map>
 

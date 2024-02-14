@@ -11,6 +11,6 @@ namespace cmder::tst::exe {
 
   TEST_F(MpExecutorTest, FirstTest)
   {
-    MpExecutor::run("Hejhooo");
+    MpExecutor::run("ls -al");
   }
 }

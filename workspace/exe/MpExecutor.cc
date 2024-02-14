@@ -6,6 +6,9 @@
  *****************************************************************************/
 
 #include <exe/MpExecutor.h>
+
+#include <common/Logger.h>
+
 #include <iostream>
 
 #include <unistd.h>
@@ -22,9 +25,9 @@ namespace cmder::exe {
   {
   }
 
-  void MpExecutor::run(const std::string& command, IpcMode mode)
+  CmdOutcome MpExecutor::run(const std::string& command, IpcMode mode)
   {
-    std::cout << "\nCMD:" << command;
+    LOG(command);
 
     int    pipefd[2];
     if (pipe(pipefd) == -1) {
@@ -37,7 +40,7 @@ namespace cmder::exe {
       throw std::runtime_error("Cannot fork child process - errno: " + errno);
     }
     else if (pid > 0) {
-      std::cout << "\nThis is the PARENT " << getpid() << ". My CHILD is " << pid;
+      LOG("This is the PARENT " << getpid() << ". My CHILD is " << pid);
 
       (void)close(pipefd[1]);          /* Close unused write end */
 
@@ -55,7 +58,7 @@ namespace cmder::exe {
       waitpid(pid, 0, 0);
     }
     else {
-      std::cout << "\nThis is the child " << getpid() << std::endl;
+      LOG("This is the child " << getpid());
 
       (void)close(pipefd[0]);          /* Close unused read end */
 
@@ -65,5 +68,10 @@ namespace cmder::exe {
 
       exit(0);
     }
+
+    CmdOutcome retVal;
+    
+    LOG("The outcome is: " << retVal);
+    return retVal;
   }
 }

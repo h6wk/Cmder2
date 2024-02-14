@@ -10,6 +10,8 @@
 #include <assert.h>
 #include <algorithm>
 
+#include <common/Logger.h>
+
 //#include <iostream>
 //#include <stacktrace>
 
@@ -45,7 +47,7 @@ namespace cmder::srv {
     if (mThreadPtr) {
       mThreadPtr->join();
     }
-    LOG("Deleted");
+    //LOG("Deleted");
   }
 
   void Server::start()

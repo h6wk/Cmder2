@@ -126,10 +126,19 @@ namespace cmder {
 	}
 
 	namespace exe {
+		class CmdOutcome {
+			+CmdOutcome()
+			+~CmdOutcome()
+			-mExitCode : int32_t
+			+operator<<(std::ostream& os, const CmdOutcome& oc) : std :: ostream&
+			-mStandardError : std::string
+			-mStandardOut : std::string
+		}
+
 		class MpExecutor {
 			+MpExecutor()
 			+~MpExecutor()
-			+{static} run(const std::string& command, IpcMode mode) : void
+			+{static} run(const std::string& command, IpcMode mode) : CmdOutcome
 		}
 
 		enum IpcMode {
