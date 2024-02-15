@@ -1,10 +1,8 @@
 /******************************************************************************
- * @Author                : h6wk<130506947+h6wk@users.noreply.github.com>     *
+ * @Author                : h6wk<h6wking@gmail.com>                           *
  * @CreatedDate           : 2024-02-14 22:09:10                               *
- * @LastEditors           : h6wk<130506947+h6wk@users.noreply.github.com>     *
- * @LastEditDate          : 2024-02-14 22:10:21                               *
- * @FilePath              : Cmder2/workspace/exe/CmdOutcome.cc                *
- * @CopyRight             : MerBleueAviation                                  *
+ * @LastEditDate          : 2024-02-15 10:44:22                               *
+ * @CopyRight             : GNU GPL                                           *
  *****************************************************************************/
 
 #include <exe/CmdOutcome.h>
@@ -17,5 +15,4 @@ namespace cmder::exe {
   {
     
   }
-
 }

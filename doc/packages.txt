@@ -196,7 +196,7 @@ pango 1:1.51.1-1
 patch 2.7.6-10
 pciutils 3.10.0-1
 pcre2 10.42-2
-perl 5.38.2-1
+perl 5.38.1-1
 perl-error 0.17029-5
 perl-mailtools 2.21-7
 perl-timedate 2.33-5

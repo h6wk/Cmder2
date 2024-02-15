@@ -82,7 +82,7 @@ namespace cmder {
 		}
 
 		namespace exe {
-			class MpExecutorTest {
+			class OsExecutorTest {
 				#SetUp() : void
 				#{static} SetUpTestSuite() : void
 				#TearDown() : void
@@ -135,9 +135,9 @@ namespace cmder {
 			-mStandardOut : std::string
 		}
 
-		class MpExecutor {
-			+MpExecutor()
-			+~MpExecutor()
+		class OsExecutor {
+			+OsExecutor()
+			+~OsExecutor()
 			+{static} run(const std::string& command, IpcMode mode) : CmdOutcome
 		}
 

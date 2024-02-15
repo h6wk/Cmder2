@@ -1,14 +1,14 @@
 /******************************************************************************
  * @Author                : h6wk<h6wking@gmail.com>                           *
  * @CreatedDate           : 2024-02-11 21:58:48                               *
- * @LastEditDate          : 2024-02-11 22:13:58                               *
+ * @LastEditDate          : 2024-02-15 10:47:58                               *
  * @CopyRight             : GNU GPL                                           *
  *****************************************************************************/
 
 #ifndef D140F00C_3F4E_42FE_9966_20D6605E0D25
 #define D140F00C_3F4E_42FE_9966_20D6605E0D25
 
-#include <exe/MpExecutor.h>
+#include <exe/OsExecutor.h>
 
 //  mingw-w64-x86_64-gtest !
 #include <gtest/gtest.h>
@@ -20,7 +20,7 @@ namespace cmder::tst::exe {
   using namespace cmder::exe;
 
   // To use gtest fixture, derive from testing::Test 
-  class MpExecutorTest : public testing::Test {
+  class OsExecutorTest : public testing::Test {
   protected:  // You should make the members protected s.t. they can be accessed from sub-classes.
     
     // Per-test-suite set-up.

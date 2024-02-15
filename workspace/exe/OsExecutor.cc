@@ -1,11 +1,11 @@
 /******************************************************************************
  * @Author                : h6wk<h6wking@gmail.com>                           *
  * @CreatedDate           : 2024-02-11 21:18:42                               *
- * @LastEditDate          : 2024-02-11 22:29:34                               *
+ * @LastEditDate          : 2024-02-15 10:47:38                               *
  * @CopyRight             : GNU GPL                                           *
  *****************************************************************************/
 
-#include <exe/MpExecutor.h>
+#include <exe/OsExecutor.h>
 
 #include <common/Logger.h>
 
@@ -17,15 +17,7 @@
 
 namespace cmder::exe {
 
-  MpExecutor::MpExecutor()
-  {
-  }
-
-  MpExecutor::~MpExecutor()
-  {
-  }
-
-  CmdOutcome MpExecutor::run(const std::string& command, IpcMode mode)
+  CmdOutcome OsExecutor::run(const std::string& command, IpcMode mode)
   {
     LOG(command);
 

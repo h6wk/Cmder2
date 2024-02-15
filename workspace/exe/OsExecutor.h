@@ -1,10 +1,8 @@
 /******************************************************************************
- * @Author                : h6wk<130506947+h6wk@users.noreply.github.com>     *
+ * @Author                : h6wk<h6wking@gmail.com>                           *
  * @CreatedDate           : 2024-02-11 21:16:11                               *
- * @LastEditors           : h6wk<130506947+h6wk@users.noreply.github.com>     *
- * @LastEditDate          : 2024-02-14 22:13:32                               *
- * @FilePath              : Cmder2/workspace/exe/MpExecutor.h                 *
- * @CopyRight             : MerBleueAviation                                  *
+ * @LastEditDate          : 2024-02-15 10:51:07                               *
+ * @CopyRight             : GNU GPL                                           *
  *****************************************************************************/
 
 #ifndef FBDBCD46_4823_4132_8C5A_00FA743A0731
@@ -24,10 +22,10 @@ namespace cmder::exe {
   };
   
 
-  class MpExecutor {
+  class OsExecutor {
   public:
-    MpExecutor();
-    virtual ~MpExecutor();
+    OsExecutor() = default;
+    virtual ~OsExecutor() = default;
 
     /// @brief Blocking call to execute a system command/script
     static CmdOutcome run(const std::string& command, IpcMode mode = IpcMode::Pipe);

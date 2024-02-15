@@ -1,10 +1,8 @@
 /******************************************************************************
- * @Author                : h6wk<130506947+h6wk@users.noreply.github.com>     *
+ * @Author                : h6wk<h6wking@gmail.com>                           *
  * @CreatedDate           : 2024-02-14 22:09:10                               *
- * @LastEditors           : h6wk<130506947+h6wk@users.noreply.github.com>     *
- * @LastEditDate          : 2024-02-14 22:35:16                               *
- * @FilePath              : Cmder2/workspace/exe/CmdOutcome.h                 *
- * @CopyRight             : MerBleueAviation                                  *
+ * @LastEditDate          : 2024-02-15 10:43:59                               *
+ * @CopyRight             : GNU GPL                                           *
  *****************************************************************************/
 
 #ifndef CF5DC6B6_6E77_4756_A106_38988630E8F3
@@ -37,4 +35,3 @@ namespace cmder::exe {
 }
 
 #endif /* CF5DC6B6_6E77_4756_A106_38988630E8F3 */
-
