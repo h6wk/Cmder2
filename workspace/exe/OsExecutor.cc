@@ -1,7 +1,7 @@
 /******************************************************************************
  * @Author                : h6wk<h6wking@gmail.com>                           *
  * @CreatedDate           : 2024-02-11 21:18:42                               *
- * @LastEditDate          : 2024-02-15 10:47:38                               *
+ * @LastEditDate          : 2024-02-15 14:45:05                               *
  * @CopyRight             : GNU GPL                                           *
  *****************************************************************************/
 
@@ -17,11 +17,39 @@
 
 namespace cmder::exe {
 
+  void childProcess(const std::string& command, int pipefd[2])
+  {
+    (void)close(pipefd[0]); // Close unused read end
+
+    FILE *fp = popen(command.c_str(), "r");
+    if (nullptr == fp) {
+      int popenErrno = errno;
+      std::stringstream errSS;
+      errSS << "popen(" << command << ") errno "   << popenErrno;
+      LOG(errSS.str());
+      return;
+    }
+
+    const size_t MAX_COMMAND_RESULT = 1000;
+    char commandResult[MAX_COMMAND_RESULT];
+    while (fgets(commandResult, MAX_COMMAND_RESULT, fp) != NULL) { // read line by line
+      printf("*** %s", commandResult);
+    }
+
+    pclose(fp);
+    //TODO: check pclose status
+
+    const std::string messageToParent("Hello Parent!");
+    (void)write(pipefd[1], messageToParent.c_str(), messageToParent.size());
+
+    (void)close(pipefd[1]); // Close write end - last message was sent
+  }
+
   CmdOutcome OsExecutor::run(const std::string& command, IpcMode mode)
   {
     LOG(command);
 
-    int    pipefd[2];
+    int pipefd[2];
     if (pipe(pipefd) == -1) {
       perror("Cannot create pipe for inter process communication");
       exit(EXIT_FAILURE);
@@ -52,12 +80,8 @@ namespace cmder::exe {
     else {
       LOG("This is the child " << getpid());
 
-      (void)close(pipefd[0]);          /* Close unused read end */
-
-      const std::string messageToParent("Hello Parent!");
-      (void)write(pipefd[1], messageToParent.c_str(), messageToParent.size());
-      (void)close(pipefd[1]);          /* Close write end */
-
+      childProcess(command, pipefd);
+      
       exit(0);
     }
 
