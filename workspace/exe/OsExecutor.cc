@@ -1,19 +1,20 @@
 /******************************************************************************
  * @Author                : h6wk<h6wking@gmail.com>                           *
  * @CreatedDate           : 2024-02-11 21:18:42                               *
- * @LastEditDate          : 2024-02-15 14:45:05                               *
+ * @LastEditDate          : 2024-02-15 22:36:13                               *
  * @CopyRight             : GNU GPL                                           *
  *****************************************************************************/
 
 #include <exe/OsExecutor.h>
+#include <exe/ProcessStatus.h>
 
 #include <common/Logger.h>
 
 #include <iostream>
 
-#include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <unistd.h>
 
 namespace cmder::exe {
 
@@ -36,8 +37,10 @@ namespace cmder::exe {
       printf("*** %s", commandResult);
     }
 
-    pclose(fp);
-    //TODO: check pclose status
+    const int statusInt = pclose(fp);
+    const ProcessStatus status(statusInt);
+    LOG(status);
+
 
     const std::string messageToParent("Hello Parent!");
     (void)write(pipefd[1], messageToParent.c_str(), messageToParent.size());

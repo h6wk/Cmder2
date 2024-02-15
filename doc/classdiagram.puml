@@ -141,6 +141,20 @@ namespace cmder {
 			+{static} run(const std::string& command, IpcMode mode) : CmdOutcome
 		}
 
+		class ProcessStatus {
+			+ProcessStatus(int status)
+			+~ProcessStatus()
+			+getStatusResult() : ProcessResult {query}
+			-mStatus : const int
+			+operator<<(std::ostream& os, const ProcessStatus& ps) : std :: ostream&
+			-mResult : tuple<ExitMode, int>
+		}
+
+		enum ExitMode {
+			Exited
+			Signaled
+		}
+
 		enum IpcMode {
 			File
 			Pipe
@@ -299,6 +313,9 @@ cmder.common.Callback::Message_t *-- cmder.common.CallbackMessageType_t
 
 
 cmder.tst.CallbackTest *-- cmder.common.Callback
+
+
+cmder.exe.ProcessStatus *-- cmder.exe.ExitMode
 
 
 cmder.agent.Receipt *-- cmder.common.ExecutionMode_t
