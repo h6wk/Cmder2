@@ -135,6 +135,13 @@ namespace cmder {
 			-mStandardOut : std::string
 		}
 
+		class Command {
+			+{static} execute(const std::string& command) : CommandResult
+		}
+
+		class CommandResult {
+		}
+
 		class OsExecutor {
 			+OsExecutor()
 			+~OsExecutor()
