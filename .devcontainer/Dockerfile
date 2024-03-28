@@ -1,10 +1,10 @@
-FROM archlinux/archlinux:base-devel-20240116.0.207387
+FROM archlinux/archlinux:base-devel-20240328.0.225215
 
 #RUN touch /root/.local/bin/allTests.sh
 #RUN echo "bazel query //... | xargs bazel test --test_output=all" >> /root/.local/bin/allTests.sh
 #RUN chmod +x /root/.local/bin/allTests.sh
 
-#ARG DISABLE_CACHE_FROM_HERE=$(date +%s)
+ARG DISABLE_CACHE_FROM_HERE=$(date +%s)
 
 RUN pacman-key --init
 RUN pacman-key --populate
