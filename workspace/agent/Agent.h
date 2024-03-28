@@ -1,7 +1,7 @@
 /******************************************************************************
  * @Author                : h6wk<h6wking@gmail.com>                           *
  * @CreatedDate           : 2023-08-13 20:00:13                               *
- * @LastEditDate          : 2023-08-13 21:07:58                               *
+ * @LastEditDate          : 2024-03-28 22:03:47                               *
  * @CopyRight             : GNU GPL                                           *
  *****************************************************************************/
 
@@ -26,7 +26,7 @@ namespace cmder::agent {
   using namespace cmder::srv;
 
   /**
-   * Client uses the agent to get access to a service. This represents a layer
+   * Client uses the agent to get access to a server. This represents a layer
    * between the client and the service layer. In a multi service environment the
    * agent can select the proper service provider.
    * 
