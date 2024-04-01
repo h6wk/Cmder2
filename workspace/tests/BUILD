@@ -10,6 +10,7 @@ cc_test(
         , "//workspace/agent:agent"
         , "//workspace/server:server"
         , "//workspace/exe:exe"
+        , "//workspace/executor/user:user"
         , "@com_google_googletest//:gtest_main"
     ],
 )

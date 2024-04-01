@@ -1,7 +1,7 @@
 /******************************************************************************
  * @Author                : h6wk<h6wking@gmail.com>                           *
  * @CreatedDate           : 2024-03-29 21:33:57                               *
- * @LastEditDate          : 2024-03-29 21:55:38                               *
+ * @LastEditDate          : 2024-04-01 20:51:13                               *
  * @CopyRight             : GNU GPL                                           *
  *****************************************************************************/
 
@@ -26,11 +26,18 @@ namespace executor::user {
     using UserID = std::string;
 
     /// @brief The user that will execute activities
+    /// @details The user will be given a unique UUID (stored for the lifetime of the object)
     /// @param name 
     explicit User(const std::string& name);
     virtual ~User() = default;
 
+    /// @brief Return with the generated UUID.
+    /// @return The UID (string)
     UserID getUserID() const;
+
+    /// @brief Return the user's name
+    /// @return User name as string 
+    std::string getName() const;
 
   private:
     const std::string mName;

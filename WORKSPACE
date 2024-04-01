@@ -33,3 +33,10 @@ http_archive(
     urls = ["https://github.com/google/googletest/archive/refs/tags/release-1.12.1.zip"],
 )
 
+# repo for libuuid (uuid generation)
+new_local_repository(
+    name = "libuuid",
+    path = "/usr/lib",
+    build_file = "//third_party/libuuid:BUILD"
+)
+

@@ -1,24 +1,18 @@
 /******************************************************************************
  * @Author                : h6wk<h6wking@gmail.com>                           *
- * @CreatedDate           : 2023-08-08 20:29:15                               *
- * @LastEditDate          : 2024-03-29 22:24:23                               *
+ * @CreatedDate           : 2024-03-29 22:23:49                               *
+ * @LastEditDate          : 2024-03-29 22:25:56                               *
  * @CopyRight             : GNU GPL                                           *
  *****************************************************************************/
 
-#ifndef DCB9787E_069F_405D_ADF8_C4A52F71F9B6
-#define DCB9787E_069F_405D_ADF8_C4A52F71F9B6
-
-#include <agent/Task.h>
+#ifndef A9824D10_9C17_49F5_9EE7_D955FFF91B3F
+#define A9824D10_9C17_49F5_9EE7_D955FFF91B3F
 
 #include <gtest/gtest.h>
 
+namespace tests {
 
-namespace cmder::tst {
-
-  using namespace cmder::agent;
-
-  // To use gtest fixture, derive from testing::Test 
-  class TaskTest : public testing::Test {
+  class UserTest : public testing::Test {
   protected:  // You should make the members protected s.t. they can be accessed from sub-classes.
     
     // Per-test-suite set-up.
@@ -43,4 +37,4 @@ namespace cmder::tst {
 
 }
 
-#endif /* DCB9787E_069F_405D_ADF8_C4A52F71F9B6 */
+#endif /* A9824D10_9C17_49F5_9EE7_D955FFF91B3F */

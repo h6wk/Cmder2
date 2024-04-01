@@ -14,6 +14,16 @@ class scoped_logger {
 }
 
 
+namespace tests {
+	class UserTest {
+		#SetUp() : void
+		#{static} SetUpTestSuite() : void
+		#TearDown() : void
+		#{static} TearDownTestSuite() : void
+	}
+}
+
+
 namespace executor {
 	namespace user {
 		class User {
@@ -21,6 +31,7 @@ namespace executor {
 			+~User()
 			+getUserID() : UserID {query}
 			-mName : const std::string
+			+getName() : std::string {query}
 			-mUserID : string
 		}
 	}
