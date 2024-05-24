@@ -1,4 +1,4 @@
-FROM archlinux/archlinux:base-devel-20240328.0.225215
+FROM archlinux/archlinux:base-devel-20240101.0.204074
 
 #RUN touch /root/.local/bin/allTests.sh
 #RUN echo "bazel query //... | xargs bazel test --test_output=all" >> /root/.local/bin/allTests.sh

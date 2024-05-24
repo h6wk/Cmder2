@@ -319,49 +319,16 @@ cmder.IStatProvider <|-- cmder.srv.Server
 
 /' Aggregation relationships '/
 
-cmder.agent.Agent "2" *-- cmder.common.Callback
-
-
-cmder.agent.Agent *-- cmder.srv.Server
-
-
 cmder.agent.Agent *-- cmder.Status
-
-
-cmder.common.AgentInfo *-- cmder.common.Callback
-
-
-cmder.tst.AgentTest "2" *-- cmder.agent.Agent
-
-
-cmder.tst.AgentTest *-- cmder.common.Callback
-
-
-cmder.tst.AgentTest *-- cmder.srv.Server
 
 
 cmder.common.Callback::Message_t *-- cmder.common.CallbackMessageType_t
 
 
-cmder.tst.CallbackTest *-- cmder.common.Callback
-
-
 cmder.exe.ProcessStatus *-- cmder.exe.ExitMode
 
 
-cmder.agent.Receipt *-- cmder.common.ExecutionMode_t
-
-
-cmder.srv.Server *-- cmder.common.AgentInfo
-
-
 cmder.srv.Server *-- cmder.Status
-
-
-cmder.tst.ServerTest *-- cmder.srv.Server
-
-
-cmder.tst.ThreadPoolTest *-- cmder.tools.ThreadPool
 
 
 
@@ -370,13 +337,13 @@ cmder.tst.ThreadPoolTest *-- cmder.tools.ThreadPool
 
 /' Nested objects '/
 
-cmder.common.Callback +-- cmder.common.Callback::Message_t
+cmder.common.Callback +-- cmder.common.Callback.Message_t
 
 
-cmder.agent.Receipt +-- cmder.agent.Receipt::Status_t
+cmder.agent.Receipt +-- cmder.agent.Receipt.Status_t
 
 
-cmder.agent.Task +-- cmder.agent.Task::TaskConfig
+cmder.agent.Task +-- cmder.agent.Task.TaskConfig
 
 
 
